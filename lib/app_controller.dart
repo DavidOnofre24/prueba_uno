@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:separate_api/product.dart';
-import 'package:separate_api/services.dart';
+import 'package:separate_api/providers/services.dart';
+
+import 'models/coupon_model.dart';
+import 'models/product_model.dart';
 
 class CatalogCartAndCheckout extends ChangeNotifier {
   List<Product> products = [];
@@ -79,31 +81,5 @@ class CatalogCartAndCheckout extends ChangeNotifier {
     clearCart();
     coupon = null;
     Navigator.of(context).pop();
-  }
-}
-
-class Coupon {
-  Coupon({
-    this.id,
-    this.code,
-    this.description,
-    this.type,
-    this.payload,
-  });
-
-  int? id;
-  String? code;
-  String? description;
-  String? type;
-  Map<String, dynamic>? payload;
-
-  factory Coupon.fromJson(Map<String, dynamic> json) {
-    return Coupon(
-      id: json["id"],
-      code: json["code"],
-      description: json["description"],
-      type: json["type"],
-      payload: json["payload"],
-    );
   }
 }

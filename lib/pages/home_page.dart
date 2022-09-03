@@ -2,8 +2,9 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:separate_api/app_controller.dart';
-import 'package:separate_api/product.dart';
 import 'package:separate_api/shop.dart';
+
+import '../models/product_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,7 +16,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    List<Product> productos = Provider.of<CatalogCartAndCheckout>(context).products;
+    List<Product> productos =
+        Provider.of<CatalogCartAndCheckout>(context).products;
     productos = productos.where((element) => element.selected == 1).toList();
     bool showBadge = productos.isNotEmpty;
     return Scaffold(

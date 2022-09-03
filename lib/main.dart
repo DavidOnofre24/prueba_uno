@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:separate_api/app_controller.dart';
-import 'package:separate_api/checkout.dart';
-import 'package:separate_api/home.dart';
+import 'package:separate_api/pages/checkout_page.dart';
+import 'package:separate_api/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

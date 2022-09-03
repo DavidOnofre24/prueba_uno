@@ -1,76 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:separate_api/app_controller.dart';
-
-class Product {
-  int? selected;
-  // bool? isAGift;
-  int? id;
-  String? name;
-  String? image;
-  int? price;
-  int? quantity;
-  bool? promotion;
-  List<int>? match;
-
-  Product(
-    this.selected,
-    // this.isAGift,
-    this.id,
-    this.name,
-    this.image,
-    this.price,
-    this.quantity,
-    this.promotion,
-    this.match,
-  );
-
-  factory Product.fromJson(Map<String, dynamic> map) {
-    return Product(
-      map['selected'] != null ? map['selected'] as int : null,
-      // map['isAGift'] != null ? map['is_a_gift'] as bool : null,
-      map['id'] != null ? map['id'] as int : null,
-      map['name'] != null ? map['name'] as String : null,
-      map['image'] != null ? map['image'] as String : null,
-      map['price'] != null ? map['price'] as int : null,
-      map['quantityInCart'] != null ? map['quantityInCart'] as int : null,
-      map['promotion'] != null ? map['promotion'] as bool : null,
-      map['match'] != null ? (map['match'] as List).cast<int>() : null,
-    );
-  }
-}
-
-class ProductCartW extends StatelessWidget {
-  const ProductCartW({Key? key, required this.product}) : super(key: key);
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Text(
-            product.name!,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w300,
-              color: Color(0xff2d2d2d),
-            ),
-          ),
-        ),
-        Text(
-          "\$ ${product.price}",
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ],
-    );
-  }
-}
+import '../app_controller.dart';
+import '../models/product_model.dart';
 
 class ProductW extends StatelessWidget {
   const ProductW({Key? key, required this.product}) : super(key: key);
