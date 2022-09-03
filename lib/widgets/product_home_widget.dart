@@ -8,6 +8,8 @@ class ProductW extends StatelessWidget {
   const ProductW({Key? key, required this.product}) : super(key: key);
   final Product product;
 
+  // TODO: Separar el codigo por secciones y eliminar comas innecesarias
+
   @override
   Widget build(BuildContext context) {
     var appController = Provider.of<CatalogCartAndCheckout>(context);

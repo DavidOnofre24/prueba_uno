@@ -34,6 +34,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     ),
   );
 
+  // TODO: Separar el codigo por secciones y eliminar comas innecesarias
+
   @override
   Widget build(BuildContext context) {
     var appController = Provider.of<CatalogCartAndCheckout>(context);

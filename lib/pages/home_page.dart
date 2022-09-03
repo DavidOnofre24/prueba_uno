@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+// TODO: Separar el codigo por secciones y eliminar comas innecesarias
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,8 @@ class ProductCartW extends StatelessWidget {
   const ProductCartW({Key? key, required this.product}) : super(key: key);
   final Product product;
 
+  // TODO: eliminar comas innecesarias
+
   @override
   Widget build(BuildContext context) {
     return Row(

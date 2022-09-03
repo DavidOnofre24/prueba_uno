@@ -1,3 +1,4 @@
+// TODO: no se esta utilizando
 class PaymentMethod {
   String? id;
   bool? selected;
