@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:separate_api/providers/services.dart';
 
-import 'models/coupon_model.dart';
-import 'models/product_model.dart';
+import '../models/coupon_model.dart';
+import '../models/product_model.dart';
 
 class CatalogCartAndCheckout extends ChangeNotifier {
   List<Product> products = [];

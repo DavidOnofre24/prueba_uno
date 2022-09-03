@@ -2,7 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:separate_api/app_controller.dart';
+import 'package:separate_api/controllers/app_controller.dart';
 
 import '../models/product_model.dart';
 

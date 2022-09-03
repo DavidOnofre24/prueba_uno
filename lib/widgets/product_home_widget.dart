@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../app_controller.dart';
+import '../controllers/app_controller.dart';
 import '../models/product_model.dart';
 
 class ProductW extends StatelessWidget {
