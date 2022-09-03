@@ -66,7 +66,7 @@ class CatalogCartAndCheckout extends ChangeNotifier {
   }
 
   int calculeShippingCost() {
-    if (calculeSubtotal() > 500) {
+    if (calculeSubtotal() > 500 || sum == 0) {
       return 0;
     } else {
       return 100;
@@ -88,8 +88,34 @@ class CatalogCartAndCheckout extends ChangeNotifier {
     return 0;
   }
 
+  int calculateDiscontPromo() {
+    num discount = 0;
+    var listRemove = <int>[];
+    final listProduct =
+        products.where((element) => element.selected == 1).toList();
+    for (int i = 0; i < listProduct.length; i++) {
+      if (listProduct[i].promotion! && listProduct[i].quantity! > 2) {
+        discount += listProduct[i].price!;
+      }
+      for (int j = 0; j < listProduct.length; j++) {
+        if (!listProduct[i].promotion! &&
+            listProduct[i].match != null &&
+            listProduct[i].match!.contains(listProduct[j].id) &&
+            !listRemove.contains(listProduct[i].id)) {
+          discount = listProduct[i].price! * 0.1 + listProduct[j].price! * 0.1;
+          listRemove.add(listProduct[i].id!);
+          listRemove.add(listProduct[j].id!);
+        }
+      }
+    }
+    return -discount.toInt();
+  }
+
   int calculateTotal() =>
-      calculeSubtotal() + calculeDiscountCoupon() + calculeShippingCost();
+      calculeSubtotal() +
+      calculeDiscountCoupon() +
+      calculeShippingCost() +
+      calculateDiscontPromo();
 
   getCoupon(String code) async {
     error = null;

@@ -172,6 +172,25 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      const Expanded(
+                          child: Text(
+                        "Descuento Promocion",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )),
+                      Text(
+                        '${appController.calculateDiscontPromo()}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                   Row(children: [
                     const Expanded(
                         child: Text("Costo de envío",
