@@ -36,6 +36,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
+    var appController = Provider.of<CatalogCartAndCheckout>(context);
     return Scaffold(
       appBar: AppBar(title: const Text("Pago")),
       body: Consumer<CatalogCartAndCheckout>(
@@ -132,72 +133,61 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ],
                   ),
                 const Divider(height: 50),
-                Wrap(
-                  runSpacing: 15,
-                  children: [
-                    Row(
-                      children: const [
-                        Expanded(
-                            child: Text(
-                          "Subtotal",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )),
-                        Text(
-                          "calcular",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                Wrap(runSpacing: 15, children: [
+                  Row(
+                    children: [
+                      const Expanded(
+                          child: Text(
+                        "Subtotal",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                            child: Text(
-                          "Descuento por cupón",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )),
-                        Text(
-                          "calcular",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                      )),
+                      Text(
+                        '${appController.calculeSubtotal()}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: const [
-                        Expanded(
-                            child: Text(
-                          "Costo de envío",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        )),
-                        Text(
-                          "calcular",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Expanded(
+                          child: Text(
+                        "Descuento por cupón",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      )),
+                      Text(
+                        '${appController.calculeDiscountCoupon()}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(children: [
+                    const Expanded(
+                        child: Text("Costo de envío",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600))),
+                    Text("${appController.calculeShippingCost()}",
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ))
+                  ])
+                ]),
                 const Divider(height: 50),
                 Row(
-                  children: const [
-                    Expanded(
+                  children: [
+                    const Expanded(
                       child: Text(
                         "Total",
                         style: TextStyle(
@@ -207,8 +197,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                       ),
                     ),
                     Text(
-                      "calcular",
-                      style: TextStyle(
+                      "${appController.calculateTotal()}",
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
                       ),

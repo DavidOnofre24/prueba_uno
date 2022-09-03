@@ -52,9 +52,44 @@ class CatalogCartAndCheckout extends ChangeNotifier {
     }
   }
 
-  calculateTotal() {
-    // TODO: Implementar algoritmo para calcular total
+  int calculeSubtotal() {
+    var subtotal = 0;
+
+    final listProduct =
+        products.where((element) => element.selected == 1).toList();
+
+    for (var product in listProduct) {
+      subtotal += product.price! * product.quantity!;
+    }
+
+    return subtotal;
   }
+
+  int calculeShippingCost() {
+    if (calculeSubtotal() > 500) {
+      return 0;
+    } else {
+      return 100;
+    }
+  }
+
+  int calculeDiscountCoupon() {
+    final subtotal = calculeSubtotal();
+    if (coupon != null) {
+      if (coupon!.type == 'DISCOUNT_PERCENTAGE' &&
+          subtotal > coupon!.payload!['minimum']) {
+        return (-subtotal * (coupon!.payload!['value'] / 100)).toInt();
+      }
+      if (coupon!.type == 'DISCOUNT_FIXED' &&
+          subtotal > coupon!.payload!['minimum']) {
+        return -coupon!.payload!['value'];
+      }
+    }
+    return 0;
+  }
+
+  int calculateTotal() =>
+      calculeSubtotal() + calculeDiscountCoupon() + calculeShippingCost();
 
   getCoupon(String code) async {
     error = null;

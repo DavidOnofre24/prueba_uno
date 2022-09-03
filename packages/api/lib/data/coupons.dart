@@ -15,7 +15,7 @@ final couponsDb = {
     "description": "100 de descuento en el total de tu compra",
     "type": "DISCOUNT_FIXED",
     "payload": {
-      "value": 10,
+      "value": 100,
       "minimum": 700,
     },
   },
