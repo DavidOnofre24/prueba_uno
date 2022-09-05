@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             child: IconButton(
+              key: const Key('checkoutButton'),
               onPressed: () => Navigator.of(context).pushNamed("/checkout"),
               icon: const Icon(Icons.shopping_cart),
             ),

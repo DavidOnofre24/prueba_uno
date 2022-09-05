@@ -219,6 +219,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                     Text(
                       "${appController.calculateTotal()}",
+                      key: const Key('total'),
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,

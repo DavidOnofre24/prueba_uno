@@ -82,6 +82,7 @@ class ProductW extends StatelessWidget {
             // De lo contrario muestra un botón para agregar
             if (product.selected == 0)
               Center(
+                key: const Key('add'),
                 child: ElevatedButton(
                   onPressed: () {
                     var count = appController.products
