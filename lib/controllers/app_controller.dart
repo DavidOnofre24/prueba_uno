@@ -66,7 +66,7 @@ class CatalogCartAndCheckout extends ChangeNotifier {
   }
 
   int calculeShippingCost() {
-    if (calculeSubtotal() > 500 || sum == 0) {
+    if (calculeSubtotal() >= 500 || calculeSubtotal() == 0) {
       return 0;
     } else {
       return 100;
